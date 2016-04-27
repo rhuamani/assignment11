@@ -21,7 +21,7 @@ binary_tree* binary_tree_create(){
   new_tree->parent= NULL;
   new_tree->right= new_tree;
   new_tree->left = new_tree;
-  new_tree->value[0]= ' ';
+  new_tree->value[0]= '\n';
 
   return new_tree;
 }
@@ -62,21 +62,26 @@ void binary_tree_set_left(binary_tree* self, binary_tree* left){
 
   if (binary_tree_is_empty(self)) return;
 
-  if (self->left != NULL && self->left->parent == self)self->left->parent= NULL;
+  if (self->left != NULL && self->left->parent == self){
+    self->left->parent= NULL;
+  }
   self->left = left;
   self->left->parent = self;
 }
 void binary_tree_set_right(binary_tree* self, binary_tree* right){
   if (binary_tree_is_empty(self)) return;
 
-  if (self->right != NULL && self->right->parent == NULL) self->right->parent= NULL;
+  if (self->right != NULL && self->right->parent == NULL) {
+    self->right->parent= NULL;
+  }
   self->right = right;
   self->right->parent = self;
 }
 bool binary_tree_is_empty(binary_tree* self){
 
+
   ///CHECK ARRAY IS EMPTYYY??
-  return NULL;
+  return self->value[0] == '\n';
 }
 bool binary_tree_is_leaf(binary_tree* self){
 
