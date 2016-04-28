@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "binary_tree_io.h"
+#include "binary_tree.h"
+
 #include <string.h>
 
 // TODO: comments here
@@ -8,7 +10,25 @@ struct binary_tree_io {
 
 };
 
-void binary_tree_write(binary_tree* self, FILE* stream){
+void binary_tree_write (binary_tree* self, FILE* stream){
+  //print string of tree in pre order recursively
+
+  if (binary_tree_get_left(self) == NULL && binary_tree_get_right(self) == NULL){
+    char line[1000];
+
+    binary_tree_get_string(self, line);
+    fprintf(stream, "%s", line);
+  }else {
+    char line[1000];
+    binary_tree_get_string(self, line);
+    fprintf(stream, "%s", line);
+    binary_tree_write(binary_tree_get_left(self), stream);
+    binary_tree_write(binary_tree_get_right(self), stream);
+
+  }
+
+
+
 
 }
 

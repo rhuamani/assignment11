@@ -9,7 +9,7 @@
 //
 // @parm self tree to write/create
 // @parm stream to write to
-void binary_tree_write(binary_tree* self, FILE* stream);
+void binary_tree_write( binary_tree* self, FILE* stream);
 
 binary_tree* binary_tree_create_f(FILE* stream);
 
