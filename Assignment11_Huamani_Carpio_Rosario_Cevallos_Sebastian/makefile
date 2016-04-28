@@ -7,13 +7,13 @@
 # Please enter your name below:
 #
 # Your name(s):
-author_name = Your Name
+author_name = Rosario Huamani Carpio and Sebastian Cevallos
 #
 # Porject name:
 project_name = Assignment11
 #
 # Command line arguments:
-CMD_ARGS ?= 
+CMD_ARGS ?=
 #
 # You will use the following commands provided by this makefile:
 #
