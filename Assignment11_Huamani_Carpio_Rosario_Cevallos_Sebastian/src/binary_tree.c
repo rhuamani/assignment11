@@ -63,7 +63,17 @@ binary_tree* binary_tree_create_stt(char* str, binary_tree* left, binary_tree* r
 
 void binary_tree_destroy(binary_tree* self){
     // traverse through tree, freeing things and setting things to null
-
+    //
+    //search for when leafs are reached, keep calling recursively on left
+    //and right side until leaf is found
+    if (self->right != NULL && self->left !=NULL){
+      binary_tree_destroy(self->left);
+      binary_tree_destroy(self->right);
+    }else{
+      //
+      free(self);
+      self= NULL;
+    }
 }
 void binary_tree_set_left(binary_tree* self, binary_tree* left){
 
