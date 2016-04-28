@@ -70,7 +70,6 @@ void binary_tree_destroy(binary_tree* self){
       binary_tree_destroy(self->left);
       binary_tree_destroy(self->right);
     }else{
-      //
       free(self);
       self= NULL;
     }
