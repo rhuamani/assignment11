@@ -55,6 +55,7 @@ binary_tree* binary_tree_create_f(FILE* stream){
   return new_tree;
 }
 
+<<<<<<< HEAD
 // binary_tree* binary_tree_create_f_help(char *str, FILE* stream){
 //   //get first char
 //   binary_tree* tree;
@@ -69,3 +70,45 @@ binary_tree* binary_tree_create_f(FILE* stream){
 //       return binary_tree_create_s(str);
 //   }
 // }
+=======
+binary_tree* binary_tree_create_f_help(FILE* stream){
+
+  char *line = NULL;
+  size_t len;
+  line = fgetln(stream, &len);
+  
+  char first = *line;
+  char *rest = *(line + 1);
+
+
+  if (first == 'Q'){
+    return binary_tree_create_stt()
+  } 
+
+
+    else if( line.startsWith("Q") ){
+      return new AnimalTree(line.substring(1),
+          readFileHelper(in),
+          readFileHelper(in));
+    }else if( line.startsWith("A") ){
+      return new AnimalTree(line.substring(1));
+    }else{
+      throw new RuntimeException("readFile::File parse errro");
+    }
+
+
+
+  //get first char
+  binary_tree* tree;
+  size_t len;
+  char first = *str;
+  if (first == 'Q'){
+    // str = fgetln(stream, &len);
+    binary_tree_set_left(tree, binary_tree_create_f_help(str, stream));
+    binary_tree_set_right(tree, binary_tree_create_f_help(str, stream));
+
+  } else if (first == 'A'){
+      return binary_tree_create_s(str);
+  }
+}
+>>>>>>> 5ba5b2f01b356b1bd103c010ed5206582b32c705
