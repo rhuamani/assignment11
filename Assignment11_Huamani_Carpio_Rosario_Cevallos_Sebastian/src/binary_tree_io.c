@@ -62,13 +62,14 @@ binary_tree* binary_tree_create_f(FILE* stream){
 
 binary_tree* binary_tree_create_f_help(char *str, FILE* stream){
   //get first char
+  binary_tree* tree;
   size_t len;
   char first = *str;
   if (first == 'Q'){
     str = fgetln(stream, &len);
-    binary_tree* left = binary_tree_create_f_help(str, stream);
-    str = fgetln(stream, &len);
-    binary_tree* right = binary_tree_create_f_help(str, stream);
+    binary_tree_set_left(tree, binary_tree_create_f_help(str, stream));
+    binary_tree_set_right(tree, binary_tree_create_f_help(str, stream));
+
   } else if (first == 'A'){
       return binary_tree_create_s(str);
   }
