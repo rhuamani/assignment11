@@ -67,7 +67,7 @@ binary_tree* binary_tree_create_f_help(FILE* stream){
   line = fgetln(stream, &len);
   
   char first = *line;
-  char *rest = *(line + 1);
+  char *rest = *line[1];
 
 
   if (first == 'Q'){
