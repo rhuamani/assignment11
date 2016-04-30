@@ -10,11 +10,11 @@ int main()
 {
     printf("Welcome to the Animals game!\n");
 
-    char test[100];
+    // char test[100];
     char *word = "QDoes it moo?";
-    
-    char *rest = *word[1];
-    printf("s <-- should be Does it moo? \n", rest);
+
+    char *rest = (word + 1);
+    printf("%s <-- should be Does it moo? \n", rest);
 
     // TODO: Add the game...
 

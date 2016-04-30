@@ -29,86 +29,37 @@ char line[MAX_STRING_SIZE];
   }
 }
 
-binary_tree* binary_tree_create_f(FILE* stream){
-  // if input strem does not represent a pre-order traversal of a bin tree
-  // if there's a line in the input file that does not begin with Q or A
-  // if there's a blank line in input file
-  // other unexpected errors
-  binary_tree* new_tree=NULL;
-  binary_tree* left_tree;
-  binary_tree* right_tree;
-  size_t len;
-  char *line = fgetln(stream, &len);
-  // if line starts with Q or A and is not a blank line
-  if (len > 0){
-    char first = *line;
-    if (first == 'Q'){
-      left_tree = binary_tree_create_f(stream);
-      right_tree = binary_tree_create_f(stream);
-      new_tree = binary_tree_create_stt(line, left_tree, right_tree);
-    } else if (first== 'A') {
-      return binary_tree_create_s(line);
-    }
-
-  }
-
-  return new_tree;
-}
-
-<<<<<<< HEAD
-// binary_tree* binary_tree_create_f_help(char *str, FILE* stream){
-//   //get first char
-//   binary_tree* tree;
-//   size_t len;
-//   char first = *str;
-//   if (first == 'Q'){
-//     str = fgetln(stream, &len);
-//     binary_tree_set_left(tree, binary_tree_create_f_help(str, stream));
-//     binary_tree_set_right(tree, binary_tree_create_f_help(str, stream));
-//
-//   } else if (first == 'A'){
-//       return binary_tree_create_s(str);
-//   }
-// }
-=======
 binary_tree* binary_tree_create_f_help(FILE* stream){
 
   char *line = NULL;
   size_t len;
   line = fgetln(stream, &len);
-  
+
   char first = *line;
-  char *rest = *line[1];
+  char *rest = (line + 1);
 
 
   if (first == 'Q'){
-    return binary_tree_create_stt()
-  } 
-
-
-    else if( line.startsWith("Q") ){
-      return new AnimalTree(line.substring(1),
-          readFileHelper(in),
-          readFileHelper(in));
-    }else if( line.startsWith("A") ){
-      return new AnimalTree(line.substring(1));
-    }else{
-      throw new RuntimeException("readFile::File parse errro");
-    }
-
-
-
-  //get first char
-  binary_tree* tree;
-  size_t len;
-  char first = *str;
-  if (first == 'Q'){
-    // str = fgetln(stream, &len);
-    binary_tree_set_left(tree, binary_tree_create_f_help(str, stream));
-    binary_tree_set_right(tree, binary_tree_create_f_help(str, stream));
-
+    return binary_tree_create_stt(rest, binary_tree_create_f_help(stream), binary_tree_create_f_help(stream));
   } else if (first == 'A'){
-      return binary_tree_create_s(str);
+    return binary_tree_create_s(rest);
   }
 }
->>>>>>> 5ba5b2f01b356b1bd103c010ed5206582b32c705
+
+binary_tree* binary_tree_create_f(FILE* stream){
+  // if input strem does not represent a pre-order traversal of a bin tree
+  // if there's a line in the input file that does not begin with Q or A
+  // if there's a blank line in input file
+  // other unexpected errors
+  binary_tree* new_tree = NULL;
+  binary_tree* left_tree = NULL;
+  binary_tree* right_tree = NULL;
+  size_t len;
+  char *line = fgetln(stream, &len);
+  // if line starts with Q or A and is not a blank line
+  if (len > 0){
+    binary_tree_create_f_help(stream);
+  }
+
+  return new_tree;
+}
