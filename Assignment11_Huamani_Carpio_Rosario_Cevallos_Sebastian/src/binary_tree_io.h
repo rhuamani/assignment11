@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include "binary_tree.h"
-// TODO: You may want to add additional includes
 
 // This function takes a binary tree and prints the text (Q's & A's) to stdout
 //
@@ -14,8 +13,7 @@ void binary_tree_write( binary_tree* self, FILE* stream);
 // This fuction creates a binary tree from the input file stream, which should
 // be a series of questions and answers in pre-order.
 //
-// @param
-// @param
+// @param 
 binary_tree* binary_tree_create_f(FILE* stream);
 
 #endif//__BINARY_TREE_IO_H__
