@@ -27,6 +27,7 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
 
     char* str = NULL;
 
+    // ask about str and returned string
     binary_tree_get_string(tree, str);
     //print out question
     printf("%s\n", str );
@@ -67,8 +68,16 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
 
     binary_tree* parent = NULL;
 
-    //something here is checkde but its a lil weird i dont get it
-    //its related to adding tree stuff accordingly
+    if (answer != NULL){
+      parent = binary_tree_get_parent(tree);
+    }
+
+    binary_tree* new_tree = NULL;
+    if (affirmative_answer(correct_answer)){
+      new_tree = binary_tree_create_stt(question, tree, binary_tree_create_s(animal));
+    } else {
+      new_tree = binary_tree_create_stt(question, binary_tree_create_s(animal), tree);
+    }
 
   }
 
@@ -81,7 +90,13 @@ void play(char* input, FILE* stream, char* output ){
   //open input file for reading (aka the game)
   FILE *input_file = fopen(input, "r");
   //opens output for reaading , we want to write the tree here
-  FILE *output_file = fopen(output, "r");
+  FILE *output_file = fopen(output, "w");
+
+  // beg: open file in read
+  // create tree from file
+  // close file then play game
+  // end game & write to file
+
 
   //make binary tree with input file
   binary_tree* tree = binary_tree_create_f(input_file);
@@ -93,7 +108,7 @@ void play(char* input, FILE* stream, char* output ){
   while (affirmative_answer(answer) ){
     //play round
     tree = play_round(stream ,tree);
-    printf("Wanna play a game?");
+    printf("Wanna play a game ;) ?");
     answer= fgetln(stream, &len);
 
   }
