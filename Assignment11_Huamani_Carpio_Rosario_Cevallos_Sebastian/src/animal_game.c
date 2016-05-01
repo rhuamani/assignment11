@@ -79,27 +79,40 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
       new_tree = binary_tree_create_stt(question, binary_tree_create_s(animal), tree);
     }
 
-  }
+    if (answer == NULL){
+      return new_tree;
+    } else {
+      if (affirmative_answer(answer)){
+        // we're at the right child of the parent
+        binary_tree_set_right(parent, new_tree);
+      } else {
+        // we're the left child of our parent
+        binary_tree_set_left(parent, new_tree);
+      }
 
-  return NULL;
+      return root;
+    }
+
+  }
 
 }
 
 
-void play(char* input, FILE* stream, char* output ){
+void play(char* text, FILE* stream){
   //open input file for reading (aka the game)
-  FILE *input_file = fopen(input, "r");
-  //opens output for reaading , we want to write the tree here
-  FILE *output_file = fopen(output, "w");
+  FILE *input_file = fopen(text, "r");
+
+  //make binary tree with input file
+  binary_tree* tree = binary_tree_create_f(input_file);
+
+  // Intro to the game
+  printf("Welcome to the Animals game!\n");
+  printf("Wanna play a game ;) ?");
 
   // beg: open file in read
   // create tree from file
   // close file then play game
   // end game & write to file
-
-
-  //make binary tree with input file
-  binary_tree* tree = binary_tree_create_f(input_file);
 
   size_t len;
   //read answer through stream
@@ -108,11 +121,16 @@ void play(char* input, FILE* stream, char* output ){
   while (affirmative_answer(answer) ){
     //play round
     tree = play_round(stream ,tree);
-    printf("Wanna play a game ;) ?");
     answer= fgetln(stream, &len);
 
   }
+  // close file for writing
+  fclose(input_file);
 
+  //opens output for reading , we want to write the tree here
+  FILE *output_file = fopen(text, "w");
+
+  
   printf("BYE!");
 
   //writes tree to output file

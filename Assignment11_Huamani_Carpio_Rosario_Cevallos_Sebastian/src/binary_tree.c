@@ -7,7 +7,7 @@
 
 struct binary_tree
 {
-    char value[MAX_STRING_SIZE];
+    char *value;
     binary_tree* left;
     binary_tree* right;
     binary_tree* parent;
@@ -22,7 +22,7 @@ binary_tree* binary_tree_create(){
   new_tree->parent= NULL;
   new_tree->right= NULL;
   new_tree->left = NULL;
-  new_tree->value[0]= '\n';
+  // (new_tree->value)[0]= '\n';
 
   return new_tree;
 }
@@ -31,10 +31,13 @@ binary_tree* binary_tree_create_s(char* str){
 
   if (str != NULL){
     binary_tree *new_tree = malloc(sizeof(binary_tree));
-    new_tree->right = new_tree->left = binary_tree_create();
+    // make sure enough space
+    if (new_tree != NULL){
+    new_tree->right = binary_tree_create();
+    new_tree->left = binary_tree_create();
     // gets length of string ti init tree with and copies it into the tree
-    int len = strlen(str);
-    strncpy(new_tree->value, str, len);
+    new_tree->value = strdup(str);
+    }
     return new_tree;
   }
   return NULL;
@@ -149,15 +152,27 @@ char* binary_tree_get_string(binary_tree* self, char* str){
 
 
 binary_tree* binary_tree_get_left(binary_tree* self){
-  return self->left;
+  if (self != NULL){
+    return self->left;
+  } else {
+  return NULL;
+  }
 }
 
 binary_tree* binary_tree_get_right(binary_tree* self){
-  return self->right;
+  if (self != NULL){
+    return self->right;
+  } else {
+  return NULL;
+  }
 }
 
 binary_tree* binary_tree_get_parent(binary_tree* self){
-  return self->parent;
+  if (self != NULL){
+    return self->parent;
+  } else {
+  return NULL;
+  }
 }
 binary_tree* binary_tree_get_root(binary_tree* self){
   if (self->parent == NULL){

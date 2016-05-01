@@ -8,4 +8,4 @@ bool affirmative_answer(char* str);
 
 //
 binary_tree* play_round(FILE* stream, binary_tree* tree);
-void play(char* input, FILE* stream, char* output);
+void play(char* text, FILE* stream);

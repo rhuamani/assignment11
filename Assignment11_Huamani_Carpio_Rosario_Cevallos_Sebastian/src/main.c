@@ -8,11 +8,18 @@
 // Program entry point
 int main()
 {
-    printf("Welcome to the Animals game!\n");
 
-    play("input.txt", stdout, "output.txt");
+    play("src/input.txt", stdin);
 
-    // TODO: Add the game...
+
+    // typedef struct test{
+    //   char value[MAX_STRING_SIZE];
+    // } test;
+    //
+    // test t;
+
+
+
 
     return EXIT_SUCCESS;
 }
