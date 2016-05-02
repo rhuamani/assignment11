@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 // TODO: Any additional includes that you need.
 
 // TODO: Add Javadoc comments for each of the functions below. See the header

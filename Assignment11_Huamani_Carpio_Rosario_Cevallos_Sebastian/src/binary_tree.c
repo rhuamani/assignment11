@@ -1,5 +1,4 @@
 #include "binary_tree.h"
-#include <string.h>
 
 // We have provided you with the binary tree struct. This struct must not be
 // changed. You should implement the binary tree functions declared in
@@ -22,7 +21,7 @@ binary_tree* binary_tree_create(){
   new_tree->parent= NULL;
   new_tree->right= NULL;
   new_tree->left = NULL;
-  // (new_tree->value)[0]= '\n';
+  new_tree->value = NULL;
 
   return new_tree;
 }
@@ -30,12 +29,12 @@ binary_tree* binary_tree_create(){
 binary_tree* binary_tree_create_s(char* str){
 
   if (str != NULL){
-    binary_tree *new_tree = malloc(sizeof(binary_tree));
+    new_tree = malloc(sizeof(binary_tree));
     // make sure enough space
     if (new_tree != NULL){
     new_tree->right = binary_tree_create();
     new_tree->left = binary_tree_create();
-    // gets length of string ti init tree with and copies it into the tree
+    // gets length of string to init tree with and copies it into the tree
     new_tree->value = strdup(str);
     }
     return new_tree;
@@ -54,13 +53,24 @@ binary_tree* binary_tree_create_stt(char* str, binary_tree* left, binary_tree* r
       right = binary_tree_create();
 
     }
-    binary_tree_set_left(new_tree, new_tree->left);
-    binary_tree_set_right(new_tree, new_tree->right);
-    binary_tree_create_s(str);
+    new_tree = binary_tree_create_s(str);
+    binary_tree_set_left(new_tree, left);
+    binary_tree_set_right(new_tree, right);
+
+    return new_tree;
 
   }
     // assumes that if str is null, then it doesn't make sense for you to have children
     return NULL;
+
+  // if (str != NULL){
+  //   if (left != NULL && right != NULL){
+
+  //
+  //     return new_tree;
+  //   }
+  // }
+  // return NULL;
 
 }
 
@@ -85,7 +95,9 @@ void binary_tree_set_left(binary_tree* self, binary_tree* left){
     self->left->parent= NULL;
   }
   self->left = left;
-  self->left->parent = self;
+  (self->left)->parent = self;
+
+
 }
 void binary_tree_set_right(binary_tree* self, binary_tree* right){
   if (binary_tree_is_empty(self)) return;
@@ -97,8 +109,8 @@ void binary_tree_set_right(binary_tree* self, binary_tree* right){
   self->right->parent = self;
 }
 bool binary_tree_is_empty(binary_tree* self){
-  // using \n to signify empty in this case
-  return self->value[0] == '\n';
+  // using NULL to signify empty in this case
+  return self->value == NULL;
 }
 bool binary_tree_is_leaf(binary_tree* self){
 
@@ -145,17 +157,22 @@ int binary_tree_depth(binary_tree* self){
 
 char* binary_tree_get_string(binary_tree* self, char* str){
 
-  str = self->value;
-  return str;
+  if (self != NULL){
+    strcpy(str, self->value);
+    return str;
+  }
+
+  return NULL;
+
 }
 
 
 
 binary_tree* binary_tree_get_left(binary_tree* self){
-  if (self != NULL){
+ if (self != NULL){
     return self->left;
-  } else {
-  return NULL;
+ } else {
+ return NULL;
   }
 }
 
