@@ -1,14 +1,10 @@
+// Input/Output nonsense
+
 #include <stdio.h>
 #include "binary_tree_io.h"
 #include "binary_tree.h"
 
 #include <string.h>
-
-// TODO: comments here
-
-// struct binary_tree_io {
-//
-// };
 
 void binary_tree_write(binary_tree* self, FILE* stream){
   //print string of tree in pre order recursively
@@ -63,7 +59,7 @@ binary_tree* binary_tree_create_f(FILE* stream){
   // binary_tree* left_tree = NULL;
   // binary_tree* right_tree = NULL
   // if line starts with Q or A and is not a blank line
-  while (!feof(stream)){
+  if (!feof(stream)){
     new_tree = binary_tree_create_f_help(stream);
     printf("just made new_tree\n");
   }

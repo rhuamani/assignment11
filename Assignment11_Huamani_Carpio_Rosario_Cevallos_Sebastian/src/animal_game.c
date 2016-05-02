@@ -1,13 +1,8 @@
-// TODO: Use this file for your game logic.
+// Game logic
 
 #include <stdio.h>
 #include "binary_tree.h"
 #include "binary_tree_io.h"
-
-// struct animal_game {
-//
-//
-// };
 
 //check that string begins with y, indicating a yes
 bool affirmative_answer(char* str){

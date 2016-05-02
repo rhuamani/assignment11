@@ -10,17 +10,17 @@
 int main()
 {
 
-    // play("src/input.txt", stdin);
+    play("src/input.txt", stdin);
     //
     //open input file for reading (aka the game)
-    FILE *input_file = fopen("src/input.txt", "r");
+    // FILE *input_file = fopen("src/input.txt", "r");
 
     //make binary tree with input file
-    binary_tree* tree = binary_tree_create_f(input_file);
+    // binary_tree* tree = binary_tree_create_f(input_file);
 
-    char *get = NULL;
-    get = binary_tree_get_string(tree, get);
-    printf("%s <== should be the question", get);
+    // char *get = NULL;
+    // char *q = binary_tree_get_string(tree, get);
+    // printf("%s <== should be the question", q);
 
 
     //binary_tree *l = binary_tree_create();
@@ -30,7 +30,7 @@ int main()
     // bool a = binary_tree_is_empty(l);
     // printf("%d \n ^should be 1", a);
 
-    binary_tree_write(tree, stdout);
+    // binary_tree_write(tree, stdout);
 
     // binary_tree *gl = binary_tree_get_left(t);
     // char *gotten = binary_tree_get_string(gl, "lol");

@@ -63,15 +63,6 @@ binary_tree* binary_tree_create_stt(char* str, binary_tree* left, binary_tree* r
     // assumes that if str is null, then it doesn't make sense for you to have children
     return NULL;
 
-  // if (str != NULL){
-  //   if (left != NULL && right != NULL){
-
-  //
-  //     return new_tree;
-  //   }
-  // }
-  // return NULL;
-
 }
 
 void binary_tree_destroy(binary_tree* self){
@@ -158,7 +149,7 @@ int binary_tree_depth(binary_tree* self){
 char* binary_tree_get_string(binary_tree* self, char* str){
 
   if (self != NULL){
-    strcpy(str, self->value);
+    str = strdup(self->value);
     return str;
   }
 
