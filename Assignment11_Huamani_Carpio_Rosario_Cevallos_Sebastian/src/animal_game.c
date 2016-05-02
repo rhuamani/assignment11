@@ -10,7 +10,7 @@ bool affirmative_answer(char* str){
   return first == 'y';
 }
 
-// method to play rounds
+// method to play rounds **ISSUES IN THIS METHOD**
 binary_tree* play_round(FILE* stream, binary_tree* tree){
   //variable to save answer coming from stream
   char* answer = NULL;
@@ -25,40 +25,44 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
     // ask about str and returned string
     str = binary_tree_get_string(tree, str);
     //print out question
-    printf("%s \n", str );
-    size_t len;
+    printf("%s", str );
     //read response to question
-    answer = fgetln(stream, &len);
+    char hold11[MAX_STRING_SIZE];
+    char* answer = fgets(hold11, MAX_STRING_SIZE, stream);
 
+    printf("%s <-- should be y \n", answer);
     //if answer is yes
-    //but why calling on different sides ?
     if(affirmative_answer(answer)){
       tree = binary_tree_get_right(tree);
-
     }else {
       tree= binary_tree_get_left(tree);
     }
 
 
   }
+
+  printf("testing!!");
   //check if guess was correct
   char* guess= NULL;
   guess = binary_tree_get_string(tree, guess);
-  printf("Were you thinking of a %s \n ?",guess);
-  size_t len;
-  //read answer
-  char* final_answer= fgetln(stream, &len);
+  printf("Were you thinking of a %s ?",guess);
+  //read answe
+  char hold0[MAX_STRING_SIZE];
+  char* final_answer = fgets(hold0, MAX_STRING_SIZE, stream);
   //if said yes, the game was guessed and its over
   if (affirmative_answer(final_answer)){
     printf("Great!");
     return root;
   }else {
     printf("Doh! What was the animal?");
-    char* animal = fgetln(stream, &len);
+    char hold[MAX_STRING_SIZE];
+    char* animal = fgets(hold, MAX_STRING_SIZE, stream);
     printf("What question separates %s from %s ?", animal,guess );
-    char* question = fgetln(stream, &len);
+    char hold2[MAX_STRING_SIZE];
+    char* question = fgets(hold2, MAX_STRING_SIZE, stream);
     printf("What is the correct answer for this animal?");
-    char* correct_answer = fgetln(stream, &len);
+    char hold3[MAX_STRING_SIZE];
+    char* correct_answer = fgets(hold3, MAX_STRING_SIZE, stream);
 
 
     binary_tree* parent = NULL;
@@ -104,16 +108,11 @@ void play(char* text, FILE* stream){
   printf("Welcome to the Animals game! \n");
   printf("Shall we play a game? ");
 
-  // beg: open file in read
-  // create tree from file
-  // close file then play game
-  // end game & write to file
-
   //read answer through stream
   char hold[MAX_STRING_SIZE];
   char* answer = fgets(hold, MAX_STRING_SIZE, stream);
   //while person wants to play
-  while (affirmative_answer(answer) ){
+  if (affirmative_answer(answer) ){
     //play round
     tree = play_round(stream ,tree);
     char hold[MAX_STRING_SIZE];
@@ -126,10 +125,12 @@ void play(char* text, FILE* stream){
   //opens output for reading , we want to write the tree here
   FILE *output_file = fopen(text, "w");
 
-
-  printf("BYE!");
+  // Says bye to end game
+  printf("Bye!");
 
   //writes tree to output file
   binary_tree_write(tree, output_file);
+
+
 
 }

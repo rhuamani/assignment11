@@ -7,19 +7,19 @@
 #include <string.h>
 
 void binary_tree_write(binary_tree* self, FILE* stream){
-  //print string of tree in pre order recursively
+//print string of tree in pre order recursively
 
 // string to output text with
-// char line[MAX_STRING_SIZE];
 char *place = NULL;
 
 // if it's a leaf
   if (binary_tree_is_leaf(self)){
     place = binary_tree_get_string(self, place);
-    fprintf(stream, "%s", place);
+    fprintf(stream, "A%s", place);
+    return;
   } else {
     place = binary_tree_get_string(self, place);
-    fprintf(stream, "%s", place);
+    fprintf(stream, "Q%s", place);
     binary_tree_write(binary_tree_get_left(self), stream);
     binary_tree_write(binary_tree_get_right(self), stream);
 
@@ -61,7 +61,6 @@ binary_tree* binary_tree_create_f(FILE* stream){
   // if line starts with Q or A and is not a blank line
   if (!feof(stream)){
     new_tree = binary_tree_create_f_help(stream);
-    printf("just made new_tree\n");
   }
 
   return new_tree;

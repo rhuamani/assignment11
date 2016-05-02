@@ -10,7 +10,11 @@
 int main()
 {
 
+    while (true){
     play("src/input.txt", stdin);
+  }
+
+  
     //
     //open input file for reading (aka the game)
     // FILE *input_file = fopen("src/input.txt", "r");
