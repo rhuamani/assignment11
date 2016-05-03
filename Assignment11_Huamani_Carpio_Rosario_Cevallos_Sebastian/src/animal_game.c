@@ -19,7 +19,6 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
   //while the tree passed in is not a leaf
   while (!binary_tree_is_leaf(tree)){
 
-
     char* str = NULL;
 
     // ask about str and returned string
@@ -30,22 +29,21 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
     char hold11[MAX_STRING_SIZE];
     char* answer = fgets(hold11, MAX_STRING_SIZE, stream);
 
-    printf("%s <-- should be y \n", answer);
     //if answer is yes
     if(affirmative_answer(answer)){
       tree = binary_tree_get_right(tree);
+
     }else {
       tree= binary_tree_get_left(tree);
+
     }
 
 
   }
-
-  printf("testing!!");
   //check if guess was correct
   char* guess= NULL;
   guess = binary_tree_get_string(tree, guess);
-  printf("Were you thinking of a %s ?",guess);
+  printf("Were you thinking of a %s?",guess);
   //read answe
   char hold0[MAX_STRING_SIZE];
   char* final_answer = fgets(hold0, MAX_STRING_SIZE, stream);
@@ -57,7 +55,7 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
     printf("Doh! What was the animal?");
     char hold[MAX_STRING_SIZE];
     char* animal = fgets(hold, MAX_STRING_SIZE, stream);
-    printf("What question separates %s from %s ?", animal,guess );
+    printf("What question separates %s from %s?", animal,guess);
     char hold2[MAX_STRING_SIZE];
     char* question = fgets(hold2, MAX_STRING_SIZE, stream);
     printf("What is the correct answer for this animal?");
@@ -112,7 +110,7 @@ void play(char* text, FILE* stream){
   char hold[MAX_STRING_SIZE];
   char* answer = fgets(hold, MAX_STRING_SIZE, stream);
   //while person wants to play
-  if (affirmative_answer(answer) ){
+    while (affirmative_answer(answer) ){
     //play round
     tree = play_round(stream ,tree);
     char hold[MAX_STRING_SIZE];
@@ -125,11 +123,13 @@ void play(char* text, FILE* stream){
   //opens output for reading , we want to write the tree here
   FILE *output_file = fopen(text, "w");
 
-  // Says bye to end game
-  printf("Bye!");
-
   //writes tree to output file
   binary_tree_write(tree, output_file);
+
+  // Says bye to end game
+  printf("Bye! \n");
+
+
 
 
 

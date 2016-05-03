@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include "binary_tree_io.h"
 #include "binary_tree.h"
-
 #include <string.h>
 
 void binary_tree_write(binary_tree* self, FILE* stream){

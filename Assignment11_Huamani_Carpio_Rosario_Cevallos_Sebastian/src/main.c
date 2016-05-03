@@ -12,10 +12,20 @@ int main()
 
     while (true){
     play("src/input.txt", stdin);
-  }
-
-  
+    }
     //
+    // binary_tree* left = binary_tree_create_s("left");
+    // binary_tree* right = binary_tree_create_s("right");
+    //
+    // binary_tree* leaf = binary_tree_create_stt("lmao", left, right);
+    // int height = binary_tree_height(leaf);
+    //
+    // binary_tree* leftchild = binary_tree_get_left(leaf);
+    // int heightLeft = binary_tree_height(leftchild);
+    // printf("%d\n",heightLeft );
+
+
+
     //open input file for reading (aka the game)
     // FILE *input_file = fopen("src/input.txt", "r");
 
