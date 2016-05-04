@@ -1,9 +1,9 @@
 QIs it bigger than a breadbox?
-QIs it red?
 Aant
-ALadybug
-QDoes it live in water?
+QIs it shady?
 QIs it a predator?
 Aelephant
 ATiger
-AWhale
+QIs it cool?
+AEdwin
+ARosario

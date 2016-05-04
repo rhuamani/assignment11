@@ -92,7 +92,6 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
     }
 
     if (answer == NULL){
-      // binary_tree_destroy(root);
       return new_tree;
     } else {
       if (affirmative_answer(answer)){
@@ -102,7 +101,6 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
         // we're the left child of our parent
         binary_tree_set_left(parent, new_tree);
       }
-      //binary_tree_destroy(new_tree);
       return root;
     }
 
