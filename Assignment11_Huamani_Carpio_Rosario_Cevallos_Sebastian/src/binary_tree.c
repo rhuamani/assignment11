@@ -1,9 +1,6 @@
 #include "binary_tree.h"
 
-// We have provided you with the binary tree struct. This struct must not be
-// changed. You should implement the binary tree functions declared in
-// binary_tree.h, and any helper functions you would like in this file.
-
+// Binary tree struct
 struct binary_tree
 {
     char *value;
@@ -11,8 +8,6 @@ struct binary_tree
     binary_tree* right;
     binary_tree* parent;
 };
-
-// binary_tree *new_tree = NULL;
 
 // Constructors
 binary_tree* binary_tree_create(){
@@ -33,16 +28,15 @@ binary_tree* binary_tree_create_s(char* str){
     binary_tree* new_tree = malloc(sizeof(binary_tree));
     // make sure enough space
     if (new_tree != NULL){
+    // set the children
     new_tree->left = binary_tree_create();
     new_tree->right = binary_tree_create();
 
-
+    // set parents
     new_tree->left->parent = new_tree;
     new_tree->right->parent = new_tree;
 
-    // binary_tree_set_left(new_tree, binary_tree_create());
-    // binary_tree_set_right(new_tree, binary_tree_create());
-    // gets length of string to init tree with and copies it into the tree
+    // set value of new node
     new_tree->value = strdup(str);
     }
     return new_tree;
@@ -50,6 +44,7 @@ binary_tree* binary_tree_create_s(char* str){
   return NULL;
 
 }
+
 binary_tree* binary_tree_create_stt(char* str, binary_tree* left, binary_tree* right){
 
   binary_tree *new_tree = NULL;
@@ -63,31 +58,28 @@ binary_tree* binary_tree_create_stt(char* str, binary_tree* left, binary_tree* r
 
     }
 
+    // make the tree with the string in it
     new_tree = binary_tree_create_s(str);
+    // assign its children
     binary_tree_set_left(new_tree, left);
     binary_tree_set_right(new_tree, right);
 
     return new_tree;
 
   }
-    // assumes that if str is null, then it doesn't make sense for you to have children
     return NULL;
-
 }
 
 void binary_tree_destroy(binary_tree* self){
-    // traverse through tree, freeing things and setting things to null
-    //
-    //search for when leafs are reached, keep calling recursively on left
-    //and right side until leaf is found
     if (self->right != NULL && self->left !=NULL){
       binary_tree_destroy(self->left);
       binary_tree_destroy(self->right);
-    }else{
+    } else{
       free(self);
       self= NULL;
     }
 }
+
 void binary_tree_set_left(binary_tree* self, binary_tree* left){
 
   if (binary_tree_is_empty(self)) return;
@@ -100,6 +92,7 @@ void binary_tree_set_left(binary_tree* self, binary_tree* left){
 
 
 }
+
 void binary_tree_set_right(binary_tree* self, binary_tree* right){
   if (binary_tree_is_empty(self)) return;
 

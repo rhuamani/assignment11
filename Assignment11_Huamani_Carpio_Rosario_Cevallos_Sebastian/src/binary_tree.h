@@ -88,9 +88,25 @@ int binary_tree_depth(binary_tree* self);
 // @param str string to copy value to
 // @return str that has the value of the given tree
 char* binary_tree_get_string(binary_tree* self, char* str);
+
+// Gets the left child of the given tree
+// @param self tree to get child of
+// @return left child
 binary_tree* binary_tree_get_left(binary_tree* self);
+
+// Gets the right child of the given tree
+// @param self tree to get child of
+// @return right child
 binary_tree* binary_tree_get_right(binary_tree* self);
+
+// Gets the parent of the given tree
+// @param self tree to get parent of
+// @return parent node
 binary_tree* binary_tree_get_parent(binary_tree* self);
+
+// Gets the root node of the given tree
+// @param self tree to get root of
+// @return root node
 binary_tree* binary_tree_get_root(binary_tree* self);
 
 #endif//__BINARY_TREE_H__

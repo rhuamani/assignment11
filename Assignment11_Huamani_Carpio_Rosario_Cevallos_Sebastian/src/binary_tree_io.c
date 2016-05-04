@@ -5,8 +5,8 @@
 #include "binary_tree.h"
 #include <string.h>
 
-void binary_tree_write(binary_tree* self, FILE* stream){
 //print string of tree in pre order recursively
+void binary_tree_write(binary_tree* self, FILE* stream){
 
 // string to output text with
 char *str = NULL;
@@ -17,8 +17,8 @@ char *str = NULL;
     fprintf(stream, "A%s", str);
     return;
   } else {
+    // it's not a leaf
     str = binary_tree_get_string(self, str);
-    // printf("%s <-- the question\n", place);
     fprintf(stream, "Q%s", str);
     binary_tree_write(binary_tree_get_left(self), stream);
     binary_tree_write(binary_tree_get_right(self), stream);
@@ -26,22 +26,22 @@ char *str = NULL;
   }
 }
 
+// helper function for create method that does the work
 binary_tree* binary_tree_create_f_help(FILE* stream){
 
+  // line to read the text with
   char *line = NULL;
   char hold[MAX_STRING_SIZE];
   line = fgets(hold, MAX_STRING_SIZE, stream);
 
+  // if the text is not null
   if (line != NULL){
+  // get the first character
   char first = *line;
+  // get the rest of the line (trim out Q or A)
   char *rest = (line + 1);
 
-
-  // char *nice_print = NULL;
-  // nice_print = strdup(rest);
-  // nice_print[strlen(nice_print) - 1] = '\0';
-
-
+  // if it's a question
   if (first == 'Q'){
     binary_tree *left = binary_tree_create_f_help(stream);
     binary_tree *right = binary_tree_create_f_help(stream);
@@ -57,19 +57,14 @@ binary_tree* binary_tree_create_f_help(FILE* stream){
     return NULL;
 }
 
+// creates a binary tree given an input file which hands off the work to the help
 binary_tree* binary_tree_create_f(FILE* stream){
-  // if input stream does not represent a pre-order traversal of a bin tree
-  // if there's a line in the input file that does not begin with Q or A
-  // if there's a blank line in input file
-  // other unexpected errors
+
+  // new tree to be created
   binary_tree* new_tree = NULL;
-  // binary_tree* left_tree = NULL;
-  // binary_tree* right_tree = NULL
-  // if line starts with Q or A and is not a blank line
-  // if (!feof(stream)){
+
+  // hand off the work to the helper function
   new_tree = binary_tree_create_f_help(stream);
-
-
 
   return new_tree;
 }

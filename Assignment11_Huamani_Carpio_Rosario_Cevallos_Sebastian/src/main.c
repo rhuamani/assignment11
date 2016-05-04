@@ -7,29 +7,11 @@
 #include "binary_tree.h"
 
 // Program entry point
+// Just calls play
 int main()
 {
+    // intro to the game!
     printf("Welcome to the Animals game! \n");
     play("src/input.txt", stdin);
-
-
-
-
-
-    // unit tests for write
-    // binary_tree *root = binary_tree_create_s("root\n");
-    // binary_tree *left = binary_tree_create_s("left\n");
-    // binary_tree *right = binary_tree_create_s("right\n");
-    //
-    // binary_tree_set_left(root, left);
-    // binary_tree_set_right(root, right);
-    //
-    // binary_tree_destroy(root);
-
-
-
-
-
-
     return EXIT_SUCCESS;
 }

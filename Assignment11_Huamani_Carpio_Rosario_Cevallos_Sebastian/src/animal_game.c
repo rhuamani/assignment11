@@ -54,8 +54,16 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
   nice_print = strdup(guess);
   nice_print[strlen(nice_print) - 1] = '\0';
 
-  printf("Were you thinking of a %s? ",nice_print);
-  //read answe
+
+  // Proper grammar!! :)
+  char vowel_or_nah = *nice_print;
+  if (vowel_or_nah == 'a' || vowel_or_nah == 'e' || vowel_or_nah == 'i' || vowel_or_nah == 'o' || vowel_or_nah == 'u'){
+      printf("Were you thinking of an %s? ",nice_print);
+  } else {
+      printf("Were you thinking of a %s? ",nice_print);
+  }
+
+  //read answer
   char hold0[MAX_STRING_SIZE];
   char* final_answer = fgets(hold0, MAX_STRING_SIZE, stream);
   //if said yes, the game was guessed and its over

@@ -13,7 +13,7 @@ void binary_tree_write( binary_tree* self, FILE* stream);
 // This fuction creates a binary tree from the input file stream, which should
 // be a series of questions and answers in pre-order.
 //
-// @param 
+// @param stream to create tree from
 binary_tree* binary_tree_create_f(FILE* stream);
 
 #endif//__BINARY_TREE_IO_H__
