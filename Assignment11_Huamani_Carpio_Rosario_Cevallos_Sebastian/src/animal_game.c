@@ -10,8 +10,11 @@ bool affirmative_answer(char* str){
   return first == 'y' || first == 'Y';
 }
 
-// method to play rounds **ISSUES IN THIS METHOD**
+// method to play rounds
 binary_tree* play_round(FILE* stream, binary_tree* tree){
+  // var used to modify strings for nice printing
+  char* nice_print = NULL;
+
   //variable to save answer coming from stream
   char* answer = NULL;
   binary_tree* root = tree;
@@ -21,12 +24,15 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
 
     char* str = NULL;
 
+
     // ask about str and returned string
     str = binary_tree_get_string(tree, str);
 
+    nice_print = strdup(str);
+    nice_print[strlen(nice_print) - 1] = '\0';
 
     //print out question
-    printf("%s ", str);
+    printf("%s ", nice_print);
     //read response to question
     char hold11[MAX_STRING_SIZE];
     answer = fgets(hold11, MAX_STRING_SIZE, stream);
@@ -45,8 +51,10 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
   char* guess= NULL;
   guess = binary_tree_get_string(tree, guess);
 
+  nice_print = strdup(guess);
+  nice_print[strlen(nice_print) - 1] = '\0';
 
-  printf("Were you thinking of a %s? ",guess);
+  printf("Were you thinking of a %s? ",nice_print);
   //read answe
   char hold0[MAX_STRING_SIZE];
   char* final_answer = fgets(hold0, MAX_STRING_SIZE, stream);
@@ -59,10 +67,10 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
     char hold[MAX_STRING_SIZE];
     char* animal = fgets(hold, MAX_STRING_SIZE, stream);
     // trim the \n
-    char *nice_print = NULL;
-    nice_print = strdup(animal);
-    nice_print[strlen(nice_print) - 1] = '\0';
-    printf("What question separates %s from %s? ", nice_print,guess);
+    char* nice_print_a = NULL;
+    nice_print_a = strdup(animal);
+    nice_print_a[strlen(nice_print_a) - 1] = '\0';
+    printf("What question separates %s from %s? ", nice_print_a,nice_print);
     char hold2[MAX_STRING_SIZE];
     char* question = fgets(hold2, MAX_STRING_SIZE, stream);
     printf("What is the correct answer for this animal? ");

@@ -3,5 +3,7 @@ QIs it red?
 Aant
 ALadybug
 QDoes it live in water?
+QIs it a predator?
 Aelephant
+ATiger
 AWhale
