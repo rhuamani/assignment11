@@ -1,9 +1,1 @@
-Qdoes it growl?
-Aelephant
-Qlio
-QIs it bigger than a breadbox?
-Aant
-Aelephant
-QIs it bigger than a breadbox?
-Aant
-Aelephant
+QIs it bigger than a breadbox?QIs it red?AantALadybugQDoes it live in water?AelephantAWhale

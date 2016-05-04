@@ -12,10 +12,11 @@ struct binary_tree
     binary_tree* parent;
 };
 
-binary_tree *new_tree = NULL;
+// binary_tree *new_tree = NULL;
 
 // Constructors
 binary_tree* binary_tree_create(){
+  binary_tree *new_tree = NULL;
   if(new_tree ==NULL){
   new_tree = malloc(sizeof(binary_tree));
   new_tree->parent= NULL;
@@ -32,11 +33,15 @@ binary_tree* binary_tree_create_s(char* str){
     binary_tree* new_tree = malloc(sizeof(binary_tree));
     // make sure enough space
     if (new_tree != NULL){
-    new_tree->right = binary_tree_create();
     new_tree->left = binary_tree_create();
+    new_tree->right = binary_tree_create();
 
-    new_tree->right->parent = new_tree;
+
     new_tree->left->parent = new_tree;
+    new_tree->right->parent = new_tree;
+
+    // binary_tree_set_left(new_tree, binary_tree_create());
+    // binary_tree_set_right(new_tree, binary_tree_create());
     // gets length of string to init tree with and copies it into the tree
     new_tree->value = strdup(str);
     }
@@ -47,6 +52,7 @@ binary_tree* binary_tree_create_s(char* str){
 }
 binary_tree* binary_tree_create_stt(char* str, binary_tree* left, binary_tree* right){
 
+  binary_tree *new_tree = NULL;
   if (str != NULL) {
     if (left == NULL) {
       left = binary_tree_create();
@@ -105,10 +111,11 @@ void binary_tree_set_right(binary_tree* self, binary_tree* right){
 }
 bool binary_tree_is_empty(binary_tree* self){
 
-  if(self ==NULL){return false;
-  };
+  if(self == NULL){
+    return false;
+  }
   // using NULL to signify empty in this case
-  return self->value ==NULL;
+  return self->value == NULL;
 }
 
 bool binary_tree_is_leaf(binary_tree* self){
