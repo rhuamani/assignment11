@@ -45,6 +45,7 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
   char* guess= NULL;
   guess = binary_tree_get_string(tree, guess);
 
+
   printf("Were you thinking of a %s? ",guess);
   //read answe
   char hold0[MAX_STRING_SIZE];
@@ -58,8 +59,10 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
     char hold[MAX_STRING_SIZE];
     char* animal = fgets(hold, MAX_STRING_SIZE, stream);
     // trim the \n
-    animal[strlen(animal) - 1] = '\0';
-    printf("What question separates %s from %s? ", animal,guess);
+    char *nice_print = NULL;
+    nice_print = strdup(animal);
+    nice_print[strlen(nice_print) - 1] = '\0';
+    printf("What question separates %s from %s? ", nice_print,guess);
     char hold2[MAX_STRING_SIZE];
     char* question = fgets(hold2, MAX_STRING_SIZE, stream);
     printf("What is the correct answer for this animal? ");
@@ -81,7 +84,7 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
     }
 
     if (answer == NULL){
-      binary_tree_destroy(root);
+      // binary_tree_destroy(root);
       return new_tree;
     } else {
       if (affirmative_answer(answer)){
@@ -91,14 +94,13 @@ binary_tree* play_round(FILE* stream, binary_tree* tree){
         // we're the left child of our parent
         binary_tree_set_left(parent, new_tree);
       }
-      binary_tree_destroy(new_tree);
+      //binary_tree_destroy(new_tree);
       return root;
     }
 
   }
 
 }
-
 
 void play(char* text, FILE* stream){
   //open input file for reading (aka the game)

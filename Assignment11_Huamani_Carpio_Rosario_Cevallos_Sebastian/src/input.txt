@@ -1,1 +1,7 @@
-QIs it bigger than a breadbox?QIs it red?AantALadybugQDoes it live in water?AelephantAWhale
+QIs it bigger than a breadbox?
+QIs it red?
+Aant
+ALadybug
+QDoes it live in water?
+Aelephant
+AWhale

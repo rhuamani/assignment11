@@ -36,7 +36,10 @@ binary_tree* binary_tree_create_f_help(FILE* stream){
   char first = *line;
   char *rest = (line + 1);
 
-  rest[strlen(rest) - 1] = '\0';
+
+  // char *nice_print = NULL;
+  // nice_print = strdup(rest);
+  // nice_print[strlen(nice_print) - 1] = '\0';
 
 
   if (first == 'Q'){
